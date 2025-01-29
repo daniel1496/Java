@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- this file contains the metadata the IoC Container needs to configure itself-->
+    <bean class="spring.ioc.Greeter" id="greeter">
+        <!-- if the class has no no-args constructor you must add one or more constructor-arg elements here-->
+        <constructor-arg name="recipient" value ="Daniel"/>
+        <!-- A property is a setter method; the set prefix is assumed and the name is camel cased -->
+        <property name="greeting" value="Hello" />
+    </bean>
+
+    <bean class="spring.ioc.Greeter" id="greeter1">
+        <!-- if the class has no no-args constructor you must add one or more constructor-arg elements here-->
+        <constructor-arg name="recipient" value ="Dave"/>
+        <property name="greeting" value="Good'day" />
+    </bean>
+
+    <bean class="spring.ioc.Enquirer" id="enquirer"/>
+
+
+    <bean class="spring.ioc.BuildingProject" id="buildingProject">
+        <constructor-arg name="name" value="My Building Project"/>
+        <!-- When a bean has a dependency we must use ref to reference another bean by name/id -->
+        <constructor-arg name="tradesperson" ref="builder"/>
+
+
+    </bean>
+
+    <bean class="spring.ioc.Builder" id="builder"/>
+    <bean class="spring.ioc.Plumber" id="plumber"/>
+
+</beans>
