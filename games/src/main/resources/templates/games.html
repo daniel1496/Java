@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Games</title>
+</head>
+<body>
+    <h1>Games</h1>
+    <form th:action="@{/search}" method="post">
+        <input type="text" name="team" placeholder="Team" />&nbsp;
+        <button>Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Home Team</th>
+                <th>Score</th>
+                <th>Away Team</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="game : ${games}">
+                <td th:text="${game.id}"></td>
+                <td th:text="${game.homeTeam}"></td>
+                <td th:text="${game.homeTeamScore}"></td>
+                <td th:text="${game.awayTeam}"></td>
+                <td th:text="${game.awayTeamScore}"></td>
+                <td th:text="${game.date}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
